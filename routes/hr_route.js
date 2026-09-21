@@ -1,21 +1,29 @@
-let express = require("express");
+let express = require('express');
+let router=express.Router();
+let{users}=require('../models/users');
 
-let router = express.Router();
-
-router.get("/viewemployees", (req, res) => {
-    res.send("view employees route");
+router.get("/viewemployees",async (req, res) => {
+    let result=await users.find();
+    res.send(result);
 });
 
 router.post("/assign_tasks", (req, res) => {
     res.send("assign tasks route");
-});
+})
 
 router.get("/view_tasks", (req, res) => {
     res.send("view tasks route");
-});
+})
 
-router.delete("/delete_tasks", (req, res) => {
-    res.send("delete tasks route");
-});
+router.delete("/deleteemployee/:id", async (req, res) => {
+    let result=await users.findByIdAndDelete(req.params.id)
+    if(result){
+        res.send("employee deleted success");
+    }else{
+         res.send("no user found");
 
-module.exports = router;
+    }
+   
+})
+
+module.exports=router;
