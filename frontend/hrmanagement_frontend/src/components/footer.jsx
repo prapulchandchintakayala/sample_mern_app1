@@ -1,8 +1,8 @@
-function Footer() {
-    return (
+function Footer(){
+    return(
         <div>
-    <footer>@ copyright 2026 - prapul</footer>
+            <footer>@ copyrights 2026 - Prapul</footer>
         </div>
     )
 }
-export default Footer;
+export default Footer
