@@ -1,8 +1,10 @@
 let express= require('express');//import package
+let cors=require('cors'); //import cors package
 let app= express();   //create object of express
 let hrroutes=require('./routes/hr_route');
 let emproutes=require('./routes/emp_route');
 let mongoose=require('mongoose'); //import mongoose package
+app.use(cors());
 
 mongoose.connect("mongodb://127.0.0.1:27017/hrmanagement")
  .then(()=>{
